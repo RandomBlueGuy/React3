@@ -1,0 +1,61 @@
+.container {
+    background-color: #282c34;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: rgb(147, 183, 202);
+    font-size: 14px;
+    border-radius: 1rem;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    padding: 2rem;
+}
+
+.data-input {   
+    width: 90%;
+}
+
+.data-output{
+    
+    width: 90%;
+    align-items: left;
+    justify-content: left;
+}
+
+form{
+    display: flex;
+    justify-content: space-evenly;
+    text-align: left;
+    align-items: center;
+    gap: 0.5rem;
+}
+h5 {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    text-align: right;
+    font-weight: lighter;
+    opacity: 0.8;
+}
+
+input, label, select, button {
+    display: block;
+    box-sizing: border-box;
+}
+
+button, select, input {
+    height: 2rem;
+    
+}
+
+button {
+    border:none;
+    background-color: rgb(33, 67, 134);
+    border-radius: 5px;
+    color: white;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
