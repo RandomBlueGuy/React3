@@ -6,8 +6,7 @@ export default function Card() {
 
     const [Ndegree, setNdegree] = useState('');
     const [TypeFrom, setTypeFrom] = useState('');
-    const [TypeTo, setTypeTo] = useState('');
-    const [Answer, setAnswer] = useState(Ndegree, TypeFrom, TypeTo);
+    const [Answer, setAnswer] = useState('');
 
     const addNumber = (event) => {
         setNdegree(Number(event.target.value));
@@ -17,64 +16,38 @@ export default function Card() {
         setTypeFrom(event.target.value);
     };
 
-    const selectDegreeTypeTo = (event) => {
-        setTypeTo(event.target.value);
-    };
-
     const sendForm = (event) => {
         event.preventDefault();
-        switch (TypeFrom[0]) {
-            case 'F':  
-                TypeTo[0] === 'F' ? setAnswer(Ndegree) : TypeTo[0] === 'C' ? setAnswer(((Ndegree-32)*5/9).toFixed(2)) : setAnswer((((Ndegree-32)*5/9)+273.15).toFixed(2));
-                break;
-            case 'C':
-                TypeTo[0] === 'F' ? setAnswer(((Ndegree*9/5) + 32).toFixed(2)) : TypeTo[0] === 'C' ? setAnswer(Ndegree) : setAnswer(Ndegree + 273.15);
-                break;
-            case 'K':
-                TypeTo[0] === 'F' ? setAnswer((((Ndegree - 273.15)*9/5)+32).toFixed(2)) : TypeTo[0] === 'C' ? setAnswer(Ndegree - 273.15) : setAnswer(Ndegree);
-                break;
-            default:
-                break;
-        };
+        (TypeFrom[0] === 'C') ? setAnswer('Result = ' + ((Ndegree*9/5) + 32).toFixed(2) + '°C') : setAnswer('Result = '+ ((Ndegree-32)*5/9).toFixed(2) + '°C'); 
+        //setNdegree(''); //Reset input
     };
 
   return (
     <div className='container'>
         <section className="data-input">
-            <h1>Degree Conversion Project</h1>
-            <h4>From & To Kelvin, Celsius and Farenheit</h4>
+            <h1>Degree Conversion</h1>
+            <h4>Celsius - Farenheit</h4>
             <form>
                 <p>From:</p>
                     <label>
-                        <input type="Number" className="Ndegree" id = "Ndegree" defaultValue="Insert Number"  value = {Ndegree} onChange = {addNumber} placeholder='Insert Number'/>
+                        <input type="text" className="Ndegree" id = "Ndegree" defaultValue="Insert Number"  value = {Ndegree} onChange = {addNumber} placeholder='Insert Number'/>
                     </label>
-                
+
+                    <p>Transform to:</p>
                     <label>
                         <select id = "sFrom" onChange = {selectDegreeTypeFrom}>
                             <option selected disabled></option>
                             <option value="Farenheit">Farenheit</option>
                             <option value="Celsius">Celsius</option>
-                            <option value="Kelvin">Kelvin</option>
                         </select>
                     </label>
-
-                    <p>To:</p>
-
-                    <label>
-                        <select id = "sTo" onChange = {selectDegreeTypeTo}>
-                            <option selected disabled></option>
-                            <option value="Farenheit">Farenheit</option>
-                            <option value="Celsius">Celsius</option>
-                            <option value="Kelvin">Kelvin</option>
-                        </select>
-                    </label>
-                         
-                    <button className="Convert" onClick={sendForm} disabled = {typeof(Ndegree) !== 'number'   || !TypeFrom || !TypeTo }>Convert</button>
+           
+                    <button className="Convert" onClick={sendForm} disabled = {typeof(Ndegree) !== 'number' || !TypeFrom }>Convert</button>
       
             </form>
         </section>
         <section className="data-output">
-                <h3>Result = {Answer} °{TypeTo[0]} </h3>      
+                <h3>{Answer}</h3>      
         </section>
 
         <h5>* button will be disabled until all the necessary data is verified</h5>
