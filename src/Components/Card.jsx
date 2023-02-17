@@ -18,7 +18,7 @@ export default function Card() {
 
     const sendForm = (event) => {
         event.preventDefault();
-        (TypeFrom[0] === 'C') ? setAnswer('Result = ' + ((Ndegree*9/5) + 32).toFixed(2) + '°C') : setAnswer('Result = '+ ((Ndegree-32)*5/9).toFixed(2) + '°C'); 
+        (TypeFrom[0] === 'C') ? setAnswer('Result = ' + Math.round(((Ndegree*9/5) + 32)*100)/100 + '°C') : setAnswer('Result = '+ Math.round(((Ndegree-32)*5/9)*100)/100 + '°C'); 
         //setNdegree(''); //Reset input
     };
 
