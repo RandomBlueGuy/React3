@@ -33,7 +33,7 @@ export default function Card() {
                         <input type="text" className="Ndegree" id = "Ndegree" defaultValue="Insert Number"  value = {Ndegree} onChange = {addNumber} placeholder='Insert Number'/>
                     </label>
 
-                    <p>Transform to:</p>
+                    <p>To:</p>
                     <label>
                         <select id = "sFrom" onChange = {selectDegreeTypeFrom}>
                             <option selected disabled></option>
